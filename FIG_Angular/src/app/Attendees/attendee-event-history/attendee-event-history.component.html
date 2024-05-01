@@ -1,0 +1,142 @@
+<nav [ngClass]="{ open: isMenuOpen }">
+  <div class="logo">
+    <a href="home"
+      ><img src="assets/images/fig-official-horizontal.jpeg" alt="logo"
+    /></a>
+  </div>
+  <div class="menu-toggle">
+    <input type="checkbox" id="menu-toggle" />
+    <label for="menu-toggle" class="menu-toggle" (click)="toggleMenu()">
+      <div class="hamburger1">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </label>
+  </div>
+  <ul class="links">
+    <li><a (click)="team($event)">Team</a></li>
+    <li><a (click)="designers($event)">Designers</a></li>
+    <li><a (click)="setPath()">Events</a></li>
+    <li><a (click)="setPath()" class="active">Event History</a></li>
+    <li>
+      <a [routerLink]="" (click)="setPathAccountAttendee()">Profile</a>
+    </li>
+    <li><a (click)="logOut()">Log Out</a></li>
+  </ul>
+</nav>
+<div class="background-image">
+  <img src="" alt="" />
+  <div class="overlay">
+    <div class="container port-container-bg">
+      <div *ngFor="let event of eventshist" class="info-container">
+        <div class="info1">{{ event.eventName }}</div>
+        <div class="merge">
+          <div class="info2">
+            <i>{{ event.eventBio }} </i>
+          </div>
+          <button
+            class="participationdetails"
+            (click)="loadNewComponent(event.eventId)"
+          >
+            Participation Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+  >
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>FIG
+          </h6>
+          <p>Hello, Welcome to Buffalo Fashion Week</p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Products</h6>
+          <p>
+            <a href="https://google.com/" class="text-reset">FIG</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
+          <p>
+            <a href="https://google.com/" class="text-reset">FIG</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> Buffalo, NY 14226, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05)">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://google.com/">google.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->

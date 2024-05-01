@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>View/Add Artists</h1>
+<mat-dialog-content>
+  <div class="row color-white m-2 rounded-2">
+    <div class="row m-2">
+      <div class="col-4 font-weight-500">Name</div>
+      <div class="col-8">{{ eventArtists.name }}</div>
+    </div>
+    <div class="row m-2">
+      <div class="col-4 font-weight-500">Bio</div>
+      <div class="col-8">{{ eventArtists.personalBio }}</div>
+    </div>
+    <div class="row m-2">
+      <div class="col-4 font-weight-500">Youtube</div>
+      <div class="col-8">
+        <a>{{ eventArtists.youtube }}</a>
+      </div>
+    </div>
+    <div class="row m-2">
+      <div class="col-4 font-weight-500">TikTok</div>
+      <div class="col-8">
+        <a>{{ eventArtists.tiktok }}</a>
+      </div>
+    </div>
+    <div class="row m-2">
+      <div class="col-4 font-weight-500">Twiter</div>
+      <div class="col-8">
+        <a>{{ eventArtists.tiktok }}</a>
+      </div>
+    </div>
+    <div class="row m-2">
+      <div class="col-4 font-weight-500">Instagram</div>
+      <div class="col-8">
+        <a>{{ eventArtists.tiktok }}</a>
+      </div>
+    </div>
+    <!-- <div class="row m-2">
+      <div class="col-4 font-weight-500">Images</div>
+      <div class="col-8"></div>
+    </div> -->
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="dialog-actions">
+  <button mat-icon-button mat-dialog-close #closeButton>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-dialog-actions>

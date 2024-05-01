@@ -1,0 +1,31 @@
+<div class="view-edit-dialog">
+  <button
+    mat-icon-button
+    class="close-button icon-outside"
+    mat-dialog-close
+    #closeButton
+  >
+    <mat-icon class="close-icon material-icons color_grey">close</mat-icon>
+  </button>
+  <app-artist-portfolio
+    *ngIf="data.userType == 'Artist-New'"
+    [isPopup]="true"
+    [isEdit]="false"
+    [eventIdForPopup]="data.eventId"
+    (closePopup)="closePopup()"
+  ></app-artist-portfolio>
+
+  <app-artist-portfolio
+    *ngIf="data.userType == 'Artist-Edit'"
+    [isPopup]="true"
+    [isEdit]="true"
+    [eventIdForPopup]="data.eventId"
+    (closePopup)="closePopup()"
+  ></app-artist-portfolio>
+
+  <app-attendee-eventinfo
+    *ngIf="data.userType == 'Attendee-Edit'"
+    [isPopup]="true"
+    [eventIdForPopup]="data.eventId"
+  ></app-attendee-eventinfo>
+</div>

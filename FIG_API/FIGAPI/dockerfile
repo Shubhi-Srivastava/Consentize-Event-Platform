@@ -1,0 +1,40 @@
+# Stage 1: Base image
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /app
+
+# Install dependencies
+COPY *.csproj ./
+RUN dotnet restore
+
+# Copy the rest of the app
+COPY . .
+
+RUN dotnet build "FIGAPI.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "FIGAPI.csproj" -c Release -o /app/publish
+
+# Stage 2: Production image
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
+WORKDIR /app
+COPY --from=publish /app/publish .
+
+# Install .NET runtime dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    libc6-dev \
+    libgdiplus \
+    libx11-dev \
+    libx11-6 \
+    libxext-dev \
+    libxext6 \
+    libxrender-dev \
+    libxrender1
+
+# Expose port 8080
+ENV ASPNETCORE_URLS=http://+:8080
+ENV DOTNET_URLS=http://+:8080
+
+ENTRYPOINT ["dotnet", "FIGAPI.dll"]
+# Start the app
+CMD ["dotnet", "FIGAPI.dll"]

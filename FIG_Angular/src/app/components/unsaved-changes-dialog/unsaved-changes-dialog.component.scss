@@ -1,0 +1,38 @@
+.cancel-dialog-height {
+  height: 90px;
+  padding: 30px;
+}
+// if you want to change the color of the icon
+.material-icons.color_grey {
+  color: #000000;
+  opacity: 0.5;
+}
+.close-button {
+  float: right;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+//if you want some css animation
+.close-icon {
+  transition: 1s ease-in-out;
+}
+
+.close-icon:hover {
+  transform: rotate(180deg);
+}
+
+//To place the x mark outside of the container
+::ng-deep .icon-outside .close-button {
+  float: right;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+// ::ng-deep .icon-outside .mat-dialog-container {
+//   overflow: unset;
+// }

@@ -1,0 +1,48 @@
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-top: 0;
+  padding-right: 0;
+}
+
+.dialog-actions button {
+  margin: 0;
+  position: relative;
+  top: -318px;
+  right: 24px;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.custom-badge {
+  &.approved {
+    background-color: #f0f9eb;
+    border-color: #e1f3d8;
+    color: #67c23a;
+  }
+  &.not-approved {
+    background-color: #fef0f0;
+    border-color: #fde2e2;
+    color: #f56c6c;
+  }
+  &.pending {
+    background-color: #f4f4f5;
+    border-color: #e9e9eb;
+    color: #909399;
+  }
+  // background-color: #f0f9eb;
+  // border-color: #e1f3d8;
+  // color: #67c23a;
+  display: inline-block;
+  padding: 8px;
+  line-height: 10px;
+  font-size: 14px;
+  border: 1px solid #d9ecff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  white-space: nowrap;
+}

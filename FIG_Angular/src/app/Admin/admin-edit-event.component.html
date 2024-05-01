@@ -1,0 +1,1051 @@
+<nav class="nav-formatting">
+  <div class="logo">
+    <a href="home"> <img [src]="this.logoimageurl" alt="Logo" /> </a>
+  </div>
+  <div class="menu-toggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <ul class="links topnav">
+    <li>
+      <a [routerLink]="" (click)="setPathEditEvent()" class="active"
+        >Edit Event
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="" (click)="setPathCreateEvent()">Create Event </a>
+    </li>
+    <li>
+      <a [routerLink]="" (click)="setPathUpcomingEvent()">Upcoming Events</a>
+    </li>
+    <li>
+      <a [routerLink]="" (click)="setPathEventHistory()">Event History</a>
+    </li>
+    <li>
+      <a [routerLink]="" (click)="setPathAccontAdmin()">Profile</a>
+    </li>
+    <li><a (click)="logOut()">Log Out</a></li>
+  </ul>
+</nav>
+
+<div
+  class="background-image"
+  [ngStyle]="{ 'background-image': 'url(' + this.backgroundurl + ')' }"
+>
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>HOME</h3>
+      <!-- <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p> -->
+    </div>
+    <div id="menu1" class="tab-pane fade">
+      <h3>Menu 1</h3>
+      <p>
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+        ut aliquip ex ea commodo consequat.
+      </p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Menu 2</h3>
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+        accusantium doloremque laudantium, totam rem aperiam.
+      </p>
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>Menu 3</h3>
+      <p>
+        Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae
+        vitae dicta sunt explicabo.
+      </p>
+    </div>
+  </div>
+  <div class="ms-5 me-5">
+    <mat-tab-group class="px-5">
+      <mat-tab label="Event Details">
+        <form (keydown.enter)="onSubmit()">
+          <div class="row color-purple px-5 py-4 margin-purple rounded-2">
+            <div class="container">
+              <div class="font-weight-500">
+                {{ entity.eventClass.eventName }}
+              </div>
+              <div class="row color-white m-2 rounded-2">
+                <div class="row m-2">
+                  <div class="col-4 font-weight-500">
+                    Event Name<span class="required">*</span>
+                  </div>
+
+                  <div class="col-8">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        class=""
+                        type="text"
+                        [disabled]="!editClicked"
+                        [(ngModel)]="entity.eventClass.eventName"
+                        name="eventName"
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-4 font-weight-500">
+                    About Event<span class="required">*</span>
+                  </div>
+                  <div class="col-8">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        type="text"
+                        [disabled]="!editClicked"
+                        [(ngModel)]="entity.eventClass.eventBio"
+                        name="aboutEvent"
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-4 font-weight-500">
+                    Event location<span class="required">*</span>
+                  </div>
+                  <div class="col-8">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        [disabled]="!editClicked"
+                        [(ngModel)]="entity.eventClass.eventLocation"
+                        name="eventLocation"
+                        type="text"
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-4 font-weight-500">
+                    Event Date<span class="required">*</span>
+                  </div>
+                  <div class="col-8">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Choose a date</mat-label>
+
+                      <input
+                        [disabled]="!editClicked"
+                        name="eventDate"
+                        matInput
+                        [(ngModel)]="eventDate"
+                        [matDatepicker]="picker"
+                        value="eventDate"
+                        [min]="today"
+                      />
+                      <mat-datepicker-toggle matSuffix [for]="picker">
+                      </mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-4 font-weight-500">
+                    Event Time<span class="required">*</span>
+                  </div>
+                  <div class="col-4">
+                    <mat-form-field appearance="fill">
+                      <mat-select
+                        [disabled]="!editClicked"
+                        [value]="entity.eventClass.eventStartTime"
+                        [(ngModel)]="entity.eventClass.eventStartTime"
+                        name="eventTimeStart"
+                      >
+                        <mat-option *ngFor="let t of time" [value]="t.value">
+                          {{ t.viewValue }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-4">
+                    <mat-form-field appearance="fill">
+                      <mat-select
+                        [disabled]="!editClicked"
+                        [value]="entity.eventClass.eventEndTime"
+                        [(ngModel)]="entity.eventClass.eventEndTime"
+                        name="eventTimeEnd"
+                      >
+                        <mat-option *ngFor="let t of time" [value]="t.value">
+                          {{ t.viewValue }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row m-2">
+                  <div class="col-4 font-weight-500"></div>
+                  <!-- <div class="col-8 font-weight-500">
+                    <button
+                      style="
+                        background-color: #d1c8e0;
+                        width: 200px;
+                        border: none;
+                        border-radius: 10px;
+                      "
+                      (click)="openViewArtistsModal()"
+                      [disabled]="isDisabled"
+                    >
+                      Edit Booth and Artists
+                    </button>
+                  </div> -->
+                </div>
+                <div class="row m-2"></div>
+                <!-- <div *ngFor="let savedArtist of savedArtists; index as i">
+                  <div class="row m-2">
+                    <div class="col-4 font-weight-500">Add Artist</div>
+                    <div class="col-4">
+                      <mat-form-field>
+                        <input
+                          matInput
+                          type="text"
+                          placeholder="Name"
+                          [(ngModel)]="savedArtist.name"
+                          name="artistname"
+                        />
+                      </mat-form-field>
+                    </div>
+                    <div class="col-4">
+                      <mat-form-field>
+                        <input
+                          matInput
+                          type="text"
+                          placeholder="Email"
+                          [(ngModel)]="savedArtist.emailAddress"
+                          name=" artistemail"
+                        />
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="row m-2">
+                    <div class="col-4"></div>
+                  </div>
+                </div> -->
+                <!-- <div *ngFor="let newArtist of newArtists; index as i">
+                  <div class="row m-2">
+                    <div class="col-4 font-weight-500">Add Artist</div>
+                    <div class="col-3">
+                      <mat-form-field>
+                        <input
+                          matInput
+                          type="text"
+                          placeholder="Name"
+                          [(ngModel)]="newArtist.name"
+                          name="artistname"
+                        />
+                      </mat-form-field>
+                    </div>
+                    <div class="col-3">
+                      <mat-form-field>
+                        <input
+                          matInput
+                          type="text"
+                          placeholder="Email"
+                          [(ngModel)]="newArtist.emailAddress"
+                          name=" artistemail"
+                        />
+                      </mat-form-field>
+                    </div>
+                    <div class="col-2">
+                      <select
+                        name="booth"
+                        id="booth"
+                        [(ngModel)]="newArtist.boothNumber"
+                        style="
+                          background-color: #d1c8e0;
+                          width: 80px;
+                          height: 29px;
+                          border: none;
+                          border-radius: 10px;
+                          padding-left: 5px;
+                          padding-right: 5px;
+                        "
+                      >
+                        <option
+                          *ngFor="let booth of booths"
+                          [value]="booth.value"
+                        >
+                          {{ booth.viewValue }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row m-2">
+                    <div class="col-4"></div>
+                  </div>
+                </div> -->
+                <div class="row m-2">
+                  <div class="col-4 font-weight-500">Ticket Link</div>
+                  <div class="col-8">
+                    <mat-form-field>
+                      <input
+                        matInput
+                        [(ngModel)]="entity.eventClass.ticketLink"
+                        name="eventLocation"
+                        type="text"
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row m-2">
+                  <div class="col-4 font-weight-500">Sponsors Images</div>
+                  <div class="col-6">
+                    <app-image-multi-upload
+                      [imagesList]="sponsorsImages"
+                      (onFileChangeEvent)="onSponsorsImageSelect($event)"
+                      (onClearFileEvent)="removeImages(sponsorsImages, $event)"
+                      [disableUpload]="true"
+                      [hideUpload]="true"
+                      class="mb-3 d-block"
+                    ></app-image-multi-upload>
+                    <app-image-multi-upload
+                      [imagesList]="savedSponsersImages"
+                      (onFileChangeEvent)="onSponsorsImageSelect($event)"
+                      (onClearFileEvent)="
+                        removeImages(savedSponsersImages, $event)
+                      "
+                      [disableDelete]="!editClicked"
+                      [disableUpload]="!editClicked"
+                    ></app-image-multi-upload>
+                    <!-- <div>
+                      <input
+                        [disabled]="!editClicked"
+                        multiple
+                        type="file"
+                        id="sponsors-image"
+                        #selectFile
+                        value="select"
+                        (change)="onSponsorsImageSelect($event)"
+                      />
+                    </div>
+                    <div>
+                      <div>
+                        <mat-grid-list
+                          *ngIf="sponsorsImages.length > 0"
+                          cols="4"
+                          rowHeight="1:1"
+                        >
+                          <mat-grid-tile
+                            *ngFor="let file of sponsorsImages; let i = index"
+                          >
+                            <div class="position-relative">
+                              <img
+                                [src]="file.url"
+                                class="img-preview border-10 admin-card"
+                              />
+                              <div
+                                class="cursor-pointer custom-hover admin-card"
+                                (click)="removeImages(sponsorsImages, i)"
+                              >
+                                <img
+                                  [src]="this.deleteIcon"
+                                  alt="Delete Icon"
+                                  class="height-30px op-1"
+                                />
+                              </div>
+                            </div>
+                          </mat-grid-tile>
+                        </mat-grid-list>
+                        <mat-grid-list
+                          cols="4"
+                          rowHeight="1:1"
+                          *ngIf="savedSponsersImages.length > 0"
+                        >
+                          <mat-grid-tile
+                            *ngFor="
+                              let file of savedSponsersImages;
+                              let i = index
+                            "
+                          >
+                            <div class="position-relative me-3">
+                              <img
+                                [src]="file.url"
+                                class="img-preview border-10 admin-card"
+                              />
+                              <div
+                                class="cursor-pointer custom-hover admin-card"
+                                (click)="removeImages(savedSponsersImages, i)"
+                              >
+                                <img
+                                  [src]="this.deleteIcon"
+                                  alt="Delete Icon"
+                                  class="height-30px op-1"
+                                />
+                              </div>
+                            </div>
+                          </mat-grid-tile>
+                        </mat-grid-list>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-4 font-weight-500">Carousel Images</div>
+                  <div class="col-6">
+                    <app-image-multi-upload
+                      [imagesList]="carouselImages"
+                      (onFileChangeEvent)="onCarouselImageSelect($event)"
+                      (onClearFileEvent)="removeImages(carouselImages, $event)"
+                      [disableUpload]="true"
+                      [hideUpload]="true"
+                      class="mb-3 d-block"
+                    ></app-image-multi-upload>
+                    <app-image-multi-upload
+                      [imagesList]="savedCarousalImages"
+                      [disableDelete]="!editClicked"
+                      (onFileChangeEvent)="onCarouselImageSelect($event)"
+                      (onClearFileEvent)="
+                        removeImages(savedCarousalImages, $event)
+                      "
+                      [disableUpload]="!editClicked"
+                    ></app-image-multi-upload>
+                    <!-- <div>
+                      <input
+                        [disabled]="!editClicked"
+                        multiple
+                        type="file"
+                        id="corousal-image"
+                        #selectFile
+                        value="select"
+                        (change)="onCarouselImageSelect($event)"
+                      />
+                    </div>
+                    <div>
+                      <div>
+                        <mat-grid-list
+                          *ngIf="carouselImages.length > 0"
+                          cols="4"
+                          rowHeight="1:1"
+                        >
+                          <mat-grid-tile
+                            *ngFor="let file of carouselImages; let i = index"
+                          >
+                            <div class="position-relative me-3">
+                              <img
+                                [src]="file.url"
+                                class="img-preview border-10 admin-card"
+                              />
+                              <div
+                                class="cursor-pointer custom-hover admin-card"
+                                (click)="removeImages(carouselImages, i)"
+                              >
+                                <img
+                                  [src]="this.deleteIcon"
+                                  alt="Delete Icon"
+                                  class="height-30px op-1"
+                                />
+                              </div>
+                            </div>
+                          </mat-grid-tile>
+                        </mat-grid-list>
+                        <mat-grid-list
+                          *ngIf="savedCarousalImages.length > 0"
+                          cols="4"
+                          rowHeight="1:1"
+                        >
+                          <mat-grid-tile
+                            *ngFor="
+                              let file of savedCarousalImages;
+                              let i = index
+                            "
+                          >
+                            <div class="position-relative me-3">
+                              <img
+                                [src]="file.url"
+                                class="img-preview border-10 admin-card"
+                              />
+                              <div
+                                class="cursor-pointer custom-hover admin-card"
+                                (click)="removeImages(savedCarousalImages, i)"
+                              >
+                                <img
+                                  [src]="this.deleteIcon"
+                                  alt="Delete Icon"
+                                  class="height-30px op-1"
+                                />
+                              </div>
+                            </div>
+                          </mat-grid-tile>
+                        </mat-grid-list>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-4 font-weight-500">Background Image</div>
+                  <div class="col-6">
+                    <app-image-multi-upload
+                      [imagesList]="backgroundImage"
+                      (onFileChangeEvent)="OnBackgroundImageSelect($event)"
+                      (onClearFileEvent)="removeImages(backgroundImage, $event)"
+                      [hideUpload]="true"
+                      class="mb-3 d-block"
+                    ></app-image-multi-upload>
+                    <app-image-multi-upload
+                      [imagesList]="savedBackgroundImage"
+                      (onFileChangeEvent)="OnBackgroundImageSelect($event)"
+                      (onClearFileEvent)="
+                        removeImages(savedBackgroundImage, $event)
+                      "
+                      [disableDelete]="!editClicked"
+                      [disableUpload]="
+                        !editClicked ||
+                        backgroundImage.length + savedBackgroundImage.length >=
+                          1
+                      "
+                      [hideUpload]="
+                        backgroundImage.length + savedBackgroundImage.length >=
+                        1
+                      "
+                    ></app-image-multi-upload>
+                    <!-- <div>
+                      <input
+                        [disabled]="!editClicked"
+                        multiple
+                        type="file"
+                        id="sponsors-image"
+                        #selectFile
+                        value="select"
+                        (change)="OnBackgroundImageSelect($event)"
+                      />
+                    </div>
+                    <div>
+                      <div>
+                        <mat-grid-list
+                          cols="4"
+                          rowHeight="1:1"
+                          *ngIf="backgroundImage.length > 0"
+                        >
+                          <mat-grid-tile
+                            *ngFor="let file of backgroundImage; let i = index"
+                          >
+                            <div class="position-relative me-3">
+                              <img
+                                [src]="file.url"
+                                class="img-preview border-10 admin-card"
+                              />
+                              <div
+                                class="cursor-pointer custom-hover admin-card"
+                                (click)="removeImages(backgroundImage, i)"
+                              >
+                                <img
+                                  [src]="this.deleteIcon"
+                                  alt="Delete Icon"
+                                  class="height-30px op-1"
+                                />
+                              </div>
+                            </div>
+                          </mat-grid-tile>
+                        </mat-grid-list>
+                        <mat-grid-list
+                          cols="4"
+                          rowHeight="1:1"
+                          *ngIf="savedBackgroundImage.length > 0"
+                        >
+                          <mat-grid-tile
+                            *ngFor="
+                              let file of savedBackgroundImage;
+                              let i = index
+                            "
+                          >
+                            <div class="position-relative me-3">
+                              <img
+                                [src]="file.url"
+                                class="img-preview border-10 admin-card"
+                              />
+                              <div
+                                class="cursor-pointer custom-hover admin-card"
+                                (click)="removeImages(savedBackgroundImage, i)"
+                              >
+                                <img
+                                  [src]="this.deleteIcon"
+                                  alt="Delete Icon"
+                                  class="height-30px op-1"
+                                />
+                              </div>
+                            </div>
+                          </mat-grid-tile>
+                        </mat-grid-list>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-4 font-weight-500">About Us Image</div>
+                  <div class="col-6">
+                    <app-image-multi-upload
+                      [imagesList]="aboutUsImage"
+                      (onFileChangeEvent)="OnAboutUsImageSelect($event)"
+                      (onClearFileEvent)="removeImages(aboutUsImage, $event)"
+                      [disableUpload]="true"
+                      [hideUpload]="true"
+                      class="mb-3 d-block"
+                    ></app-image-multi-upload>
+                    <app-image-multi-upload
+                      [imagesList]="savedAboutUsImage"
+                      (onFileChangeEvent)="OnAboutUsImageSelect($event)"
+                      (onClearFileEvent)="
+                        removeImages(savedAboutUsImage, $event)
+                      "
+                      [disableDelete]="!editClicked"
+                      [disableUpload]="
+                        !editClicked ||
+                        aboutUsImage.length + savedAboutUsImage.length >= 1
+                      "
+                      [hideUpload]="
+                        aboutUsImage.length + savedAboutUsImage.length >= 1
+                      "
+                    ></app-image-multi-upload>
+                    <!-- <div>
+                      <input
+                        [disabled]="!editClicked"
+                        multiple
+                        type="file"
+                        id="corousal-image"
+                        #selectFile
+                        value="select"
+                        (change)="OnAboutUsImageSelect($event)"
+                      />
+                    </div>
+                    <div>
+                      <div>
+                        <mat-grid-list
+                          cols="4"
+                          rowHeight="1:1"
+                          *ngIf="aboutUsImage.length > 0"
+                        >
+                          <mat-grid-tile
+                            *ngFor="let file of aboutUsImage; let i = index"
+                          >
+                            <div class="position-relative me-3">
+                              <img
+                                [src]="file.url"
+                                class="img-preview border-10 admin-card"
+                              />
+                              <div
+                                class="cursor-pointer custom-hover admin-card"
+                                (click)="removeImages(aboutUsImage, i)"
+                              >
+                                <img
+                                  [src]="this.deleteIcon"
+                                  alt="Delete Icon"
+                                  class="height-30px op-1"
+                                />
+                              </div>
+                            </div>
+                          </mat-grid-tile>
+                        </mat-grid-list>
+                        <mat-grid-list
+                          cols="4"
+                          rowHeight="1:1"
+                          *ngIf="savedAboutUsImage.length > 0"
+                        >
+                          <mat-grid-tile
+                            *ngFor="
+                              let file of savedAboutUsImage;
+                              let i = index
+                            "
+                          >
+                            <div class="position-relative me-3">
+                              <img
+                                [src]="file.url"
+                                class="img-preview border-10 admin-card"
+                              />
+                              <div
+                                class="cursor-pointer custom-hover admin-card"
+                                (click)="removeImages(savedAboutUsImage, i)"
+                              >
+                                <img
+                                  [src]="this.deleteIcon"
+                                  alt="Delete Icon"
+                                  class="height-30px op-1"
+                                />
+                              </div>
+                            </div>
+                          </mat-grid-tile>
+                        </mat-grid-list>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+                <div class="row m-2">
+                  <div class="col-4 font-weight-500">Logo Image</div>
+                  <div class="col-6">
+                    <app-image-multi-upload
+                      [imagesList]="logoImage"
+                      (onFileChangeEvent)="OnLogoImageSelect($event)"
+                      (onClearFileEvent)="removeImages(logoImage, $event)"
+                      [disableUpload]="true"
+                      [hideUpload]="true"
+                      class="mb-3 d-block"
+                    ></app-image-multi-upload>
+                    <app-image-multi-upload
+                      [imagesList]="savedLogoImage"
+                      (onFileChangeEvent)="OnLogoImageSelect($event)"
+                      (onClearFileEvent)="removeImages(savedLogoImage, $event)"
+                      [disableDelete]="!editClicked"
+                      [disableUpload]="
+                        !editClicked ||
+                        savedLogoImage.length + logoImage.length >= 1
+                      "
+                      [hideUpload]="
+                        savedLogoImage.length + logoImage.length >= 1
+                      "
+                    ></app-image-multi-upload>
+                    <!-- <div>
+                      <input
+                        [disabled]="!editClicked"
+                        multiple
+                        type="file"
+                        id="corousal-image"
+                        #selectFile
+                        value="select"
+                        (change)="OnLogoImageSelect($event)"
+                      />
+                    </div>
+                    <div>
+                      <div>
+                        <mat-grid-list
+                          cols="4"
+                          rowHeight="1:1"
+                          *ngIf="logoImage.length > 0"
+                        >
+                          <mat-grid-tile
+                            *ngFor="let file of logoImage; let i = index"
+                          >
+                            <div class="position-relative me-3">
+                              <img
+                                [src]="file.url"
+                                class="img-preview border-10 admin-card"
+                              />
+                              <div
+                                class="cursor-pointer custom-hover admin-card"
+                                (click)="removeImages(logoImage, i)"
+                              >
+                                <img
+                                  [src]="this.deleteIcon"
+                                  alt="Delete Icon"
+                                  class="height-30px op-1"
+                                />
+                              </div>
+                            </div>
+                          </mat-grid-tile>
+                        </mat-grid-list>
+                        <mat-grid-list
+                          cols="4"
+                          rowHeight="1:1"
+                          *ngIf="savedLogoImage.length > 0"
+                        >
+                          <mat-grid-tile
+                            *ngFor="let file of savedLogoImage; let i = index"
+                          >
+                            <div class="position-relative me-3">
+                              <img
+                                [src]="file.url"
+                                class="img-preview border-10 admin-card"
+                              />
+                              <div
+                                class="cursor-pointer custom-hover admin-card"
+                                (click)="removeImages(savedLogoImage, i)"
+                              >
+                                <img
+                                  [src]="this.deleteIcon"
+                                  alt="Delete Icon"
+                                  class="height-30px op-1"
+                                />
+                              </div>
+                            </div>
+                          </mat-grid-tile>
+                        </mat-grid-list>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center" style="height: 40px">
+              <div class="col-4 text-center mt-1">
+                <button
+                  *ngIf="editClicked"
+                  type="submit"
+                  (click)="onSubmit()"
+                  style="
+                    background-color: #ac9cc4;
+                    width: 220px;
+                    border: none;
+                    border-radius: 10px;
+                    height: 40px;
+                  "
+                >
+                  Save
+                </button>
+              </div>
+
+              <div class="col-4 text-center mt-1">
+                <button
+                  (click)="onCancel()"
+                  style="
+                    background-color: #fff;
+                    width: 220px;
+                    border: none;
+                    border-radius: 10px;
+                    height: 40px;
+                  "
+                >
+                  Cancel
+                </button>
+                <button
+                  [hidden]="true"
+                  type="button"
+                  id="openModalButton"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  Open Modal
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="Artists">
+        <div
+          class="row color-purple px-5 py-4 w-5 height-and-scroll margin-purple rounded-2"
+        >
+          <div class="font-weight-500">
+            {{ entity.eventClass.eventName }}
+          </div>
+          <div class="row color-white m-2 rounded-2">
+            <div class="row font-weight-500 justify-content-center bold">
+              View/Edit Artists
+              <br />
+              <br />
+            </div>
+
+            <view-artist-booth
+              (artistSaved)="artistSaved()"
+              [eventId]="this.eventId"
+              [eventName]="this.eventName"
+              [isDisabled]="!this.editClicked"
+            ></view-artist-booth>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Attendees">
+        <div
+          class="row color-purple px-5 py-4 w-5 height-and-scroll margin-purple rounded-2"
+        >
+          <div class="font-weight-500">
+            {{ entity.eventClass.eventName }}
+          </div>
+          <div class="container">
+            <div
+              class="row color-white m-2 rounded-2 p-2"
+              *ngFor="let attendee of attendees"
+            >
+              <div class="col-4 text-decoration-underline">
+                Name: {{ attendee.name }}
+              </div>
+              <div class="col-4"></div>
+              <div class="col-4 px-2 py-2">
+                Digital wallet : {{ attendee.digitatWallet }}
+              </div>
+              <div class="col-4 px-2">Email : {{ attendee.emailAddress }}</div>
+              <div class="col-4 px-2 py-2">
+                Phone :
+                {{
+                  attendee.phoneNumber === null
+                    ? "Not Provided"
+                    : attendee.phoneNumber
+                }}
+              </div>
+              <div class="col-4 px-2 py-2">
+                Notifications :
+                {{
+                  attendee.notificationStatus === "Y" ? "Opted in" : "Opted out"
+                }}
+              </div>
+              <div
+                *ngIf="attendee.boothsVisited && attendee.boothsVisited.length"
+                class="col-6 px-2"
+              >
+                Booths Visitied: {{ attendee.boothsVisited.length }}
+              </div>
+              <div class="col-2"></div>
+              <div class="col-3 px-2" style="justify-content: flex-end">
+                <button
+                  [disabled]="attendee.isLoading"
+                  *ngIf="
+                    attendee.digitalGoodiesReceived === null ||
+                    attendee.digitalGoodiesReceived === 'N'
+                  "
+                  (click)="sendGoodies(attendee)"
+                  style="
+                    background-color: #d1c8e0;
+                    width: 150px;
+                    border: none;
+                    border-radius: 10px;
+                  "
+                >
+                  Send goodies
+                </button>
+                <div
+                  *ngIf="attendee.digitalGoodiesReceived === 'Y'"
+                  class="status-tag tag-green"
+                >
+                  Goodies received
+                </div>
+              </div>
+            </div>
+            <div class="col-4 text-decoration-underline"></div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Close Form</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Any unsaved changes will be discarded. Are you sure you want to
+            leave the page?
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Stay back
+            </button>
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              (click)="setPathUpcomingEvent()"
+              class="btn btn-primary"
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+  >
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>FIG
+          </h6>
+          <p>Hello, Welcome to Buffalo Fashion Week</p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Products</h6>
+          <p>
+            <a href="https://google.com/" class="text-reset">FIG</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
+          <p>
+            <a href="https://google.com/" class="text-reset">FIG</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> Buffalo, NY 14226, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05)">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://google.com/">google.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->

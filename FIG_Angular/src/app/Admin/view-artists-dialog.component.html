@@ -1,0 +1,259 @@
+<div>
+  <div class="row m-2">
+    <div class="col-4 font-weight-500">Number of booths</div>
+    <div class="col-4">
+      <input
+        [(ngModel)]="this.numberOfBooths"
+        [disabled]="isDisabled"
+        name="noOfBooths"
+        type="text"
+        style="width: 80px"
+        (blur)="onBoothBlur()"
+      />
+    </div>
+    <div class="col-2 text-decoration-underline"></div>
+  </div>
+  <div *ngFor="let artist of savedArtists; index as i">
+    <div class="row m-2">
+      <div class="col-4">
+        <input
+          class="add-artist-form-input"
+          type="text"
+          placeholder="Name"
+          [(ngModel)]="savedArtists[i].name"
+          [disabled]="isDisabled"
+          name="artistname"
+        />
+        <span (click)="viewArtistDetails(artist)">
+          <img
+            [src]="this.infoIcon"
+            alt="Info Icon"
+            class="height-20px op-1 ms-2"
+          />
+        </span>
+      </div>
+      <div class="col-4">
+        <input
+          class="add-artist-form-input"
+          type="text"
+          placeholder="Email"
+          [(ngModel)]="savedArtists[i].emailAddress"
+          [disabled]="isDisabled"
+          name=" artistemail"
+        />
+      </div>
+      <div class="col-1 font-weight-500">
+        <select
+          [(ngModel)]="savedArtists[i].boothNumber"
+          [disabled]="isDisabled"
+          style="
+            background-color: #d1c8e0;
+            width: 40px;
+            height: 29px;
+            border: none;
+            border-radius: 10px;
+            padding-left: 5px;
+            padding-right: 5px;
+          "
+        >
+          <option></option>
+          <option *ngFor="let booth of booths" [value]="booth">
+            {{ booth }}
+          </option>
+        </select>
+      </div>
+      <div class="col-1 font-weight-500">
+        <img
+          [src]="savedArtists[i].qrCodeURL"
+          alt="QR code"
+          width="40"
+          height="40"
+          (click)="downloadImage(savedArtists[i].qrCodeURL)"
+        />
+      </div>
+      <div class="col-2">
+        <span style="margin-right: 10px" class="custom-badge approved"
+          >Approved</span
+        >
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let artist of newArtists; index as i">
+    <div class="row m-2">
+      <div class="col-4">
+        <input
+          class="add-artist-form-input"
+          type="text"
+          placeholder="Name"
+          [(ngModel)]="newArtists[i].name"
+          [disabled]="isDisabled"
+          name="artistname"
+        />
+      </div>
+      <div class="col-4">
+        <input
+          class="add-artist-form-input"
+          type="text"
+          placeholder="Email"
+          [(ngModel)]="newArtists[i].emailAddress"
+          [disabled]="isDisabled"
+          name=" artistemail"
+        />
+      </div>
+      <div class="col-4 font-weight-500">
+        <select
+          [(ngModel)]="newArtists[i].boothNumber"
+          [disabled]="isDisabled"
+          style="
+            background-color: #d1c8e0;
+            width: 40px;
+            height: 29px;
+            border: none;
+            border-radius: 10px;
+            padding-left: 5px;
+            padding-right: 5px;
+          "
+        >
+          <option></option>
+          <option *ngFor="let booth of booths" [value]="booth">
+            {{ booth }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="{ disabled: this.unusedBooths == [] }">
+    <div class="row m-2" *ngFor="let artist of approvalListArtists">
+      <div class="col-4 mt-1 mb-1 text-decoration-underline">
+        <span (click)="approvalPreview(artist)" class="cursor-pointer">{{
+          artist.name
+        }}</span>
+      </div>
+
+      <div class="col-4 mt-2 mb-2">{{ artist.email }}</div>
+      <div class="col-1 font-weight-500">
+        <select
+          style="
+            background-color: #d1c8e0;
+            width: 40px;
+            height: 29px;
+            border: none;
+            border-radius: 10px;
+            padding-left: 5px;
+            padding-right: 5px;
+          "
+          [(ngModel)]="artist.boothNumber"
+        >
+          <option></option>
+          <option *ngFor="let booth of booths" [value]="booth">
+            {{ booth }}
+          </option>
+        </select>
+      </div>
+      <div class="col-1 font-weight-500"></div>
+      <div class="col-1" *ngIf="!approveDeclineArtist">
+        <button
+          style="
+            background-color: #d1c8e0;
+            width: 40px;
+            height: 29px;
+            border: none;
+            border-radius: 10px;
+          "
+          type="button"
+          (click)="approveArtist(artist.userId, artist.boothNumber)"
+        >
+          <mat-icon>done</mat-icon>
+        </button>
+      </div>
+      <div class="col-1" *ngIf="!approveDeclineArtist">
+        <button
+          style="
+            background-color: #d1c8e0;
+            width: 45 px;
+            height: 29px;
+            border: none;
+            border-radius: 10px;
+          "
+          (click)="denyArtist(artist.userId)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <div
+        class="col-2"
+        *ngIf="approveDeclineArtist"
+        [ngClass]="
+          approvalstatus == 'Approved'
+            ? 'custom-badge approved'
+            : 'custom-badge not-approved'
+        "
+      >
+        {{ approvalstatus }}
+      </div>
+      <!-- <span style="margin-right: 10px" *ngIf="" class="custom-badge approved"
+        >Approved</span
+      >
+      <span
+        style="margin-right: 10px"
+        *ngIf=""
+        class="custom-badge not-approved"
+        >Declined</span
+      > -->
+    </div>
+  </div>
+  <div *ngFor="let artist of allArtists; index as i">
+    <div class="row m-2">
+      <div class="col-4">
+        {{ artist.name }}
+      </div>
+      <div class="col-4">
+        {{ artist.email }}
+      </div>
+      <div class="col-2"></div>
+      <div class="col-2 font-weight-500">
+        <span class="custom-badge not-approved">
+          {{ artist.approvalStatus === "N" ? "Declined" : " " }}
+        </span>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="row justify-content-center">
+    <div class="col-3" mat-dialog-actions>
+      <button
+        type="submit"
+        (click)="onSave()"
+        [disabled]="isDisabled"
+        style="
+          background-color: #d1c8e0;
+          width: 120px;
+          border: none;
+          border-radius: 10px;
+          height: 30px;
+        "
+      >
+        Save
+      </button>
+    </div>
+
+    <div class="col-3" mat-dialog-actions>
+      <button
+        type="submit"
+        (click)="onCancel()"
+        [disabled]="isDisabled"
+        style="
+          background-color: #d1c8e0;
+          width: 120px;
+          border: none;
+          border-radius: 10px;
+          height: 30px;
+        "
+      >
+        Cancel
+      </button>
+    </div>
+    <br />
+    <br />
+  </div>
+</div>

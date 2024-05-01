@@ -1,0 +1,1140 @@
+.logo {
+  margin-right: 1rem;
+}
+
+.logo img {
+  height: 80px;
+  width: auto;
+}
+
+nav {
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.menu-toggle input {
+  display: none;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  width: 25px;
+  margin-top: 5px;
+  position: relative;
+  background: #333;
+  border-radius: 3px;
+  z-index: 1;
+}
+
+.menu-toggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+.menu-toggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+.menu-toggle input:checked ~ span {
+  transform: rotate(-45deg) translate(-2px, -1px);
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(45deg) translate(-2px, -1px);
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.links li {
+  margin-left: 1rem;
+}
+
+.links li:first-child {
+  margin-left: 0;
+}
+
+.links li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.links li a:hover {
+  color: #000;
+}
+
+/* Mobile View */
+@media only screen and (max-width: 767px) {
+.logo{
+  margin-right: 0.5rem;
+}
+
+.logo img{
+  height: 50px;
+  width: auto;
+}
+
+nav{
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.menu-toggle {
+  display: block;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+}
+
+.menu-toggle input {
+  display: block;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  width: 25px;
+  margin: 5px 0;
+  position: relative;
+  background: #333;
+  border-radius: 3px;
+  z-index: 1;
+}
+
+.menu-toggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+.menu-toggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+.menu-toggle input:checked ~ span {
+  transform: rotate(-45deg) translate(-3px, -1px);
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(45deg) translate(-3px, -1px);
+}
+
+.links {
+  display: none;
+}
+}
+
+/* Mobile View */
+@media only screen and (max-width: 767px) {
+  .logo{
+    margin-right: 0.5rem;
+    margin-top: 10px;
+    margin-left: -160px;
+  }
+
+  .logo img{
+    height: 50px;
+    width: auto;
+    margin-right: 50px;
+  }
+
+  nav{
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    top: 20px;
+    right: 20px;
+  }
+
+  .menu-toggle input {
+    display: block;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .menu-toggle span {
+    display: block;
+    height: 2px;
+    width: 25px;
+    margin: 5px 0;
+    position: relative;
+    background: #333;
+    border-radius: 3px;
+    z-index: 1;
+  }
+
+  .menu-toggle span:first-child {
+    transform-origin: 0% 0%;
+  }
+  
+  .menu-toggle span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+  }
+  
+  .menu-toggle input:checked ~ span {
+    transform: rotate(-45deg) translate(-3px, -1px);
+  }
+  
+  .menu-toggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+  }
+  
+  .menu-toggle input:checked ~ span:nth-last-child(2) {
+    transform: rotate(45deg) translate(-3px, -1px);
+  }
+
+  .links {
+    display: none;
+  }
+}
+
+/* Tablet View */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+.logo{
+  margin-right: 0.75rem;
+}
+
+.logo img{
+  height: 75px;
+  width: auto;
+}
+
+nav{
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.75rem;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.menu-toggle input {
+  display: none;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  width: 25px;
+  margin-top: 5px;
+  position: relative;
+  background: #333;
+  border-radius: 3px;
+  z-index: 1;
+      margin-bottom: 5px;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+.menu-toggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+.menu-toggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+.menu-toggle input:checked ~ span {
+  transform: rotate(-45deg) translate(-2px, -1px);
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(45deg) translate(-2px, -1px);
+}
+
+.links {
+  margin-right: 20px;
+}
+
+.links li {
+  margin-left: 0.5rem;
+}
+
+.links li:first-child {
+  margin-left: 0;
+}
+}
+
+
+.logo {
+  margin-right: 1rem;
+}
+
+.logo img {
+  height: 80px;
+  width: auto;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.menu-toggle input {
+  display: none;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  width: 25px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #333;
+  border-radius: 3px;
+  z-index: 1;
+}
+
+
+/* Mobile View CSS */
+@media only screen and (max-width: 767px) {
+
+  .logo img {
+    height: 80px;
+  }
+
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    margin-right: 1rem;
+  }
+
+  .menu-toggle input:checked~ul {
+    display: block;
+  }
+
+  .menu-toggle span {
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .menu-toggle input:checked~span:nth-of-type(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle input:checked~span:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle input:checked~span:nth-of-type(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  .menu {
+    display: none;
+    margin-top: 1rem;
+    padding: 0;
+    position: absolute;
+  }
+
+  .menu li {
+    margin-bottom: 0.5rem;
+  }
+
+  .menu a {
+    display: block;
+    padding: 0.5rem;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+}
+
+
+.menu-toggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+.menu-toggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+.menu-toggle input:checked ~ span {
+  transform: rotate(-45deg) translate(-2px, -1px);
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(45deg) translate(-2px, -1px);
+}
+
+.links li {
+  margin-left: 1rem;
+}
+
+.links li:first-child {
+  margin-left: 0;
+}
+
+.links li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.links li a:hover {
+  color: #000;
+}
+
+/* Mobile view */
+
+@media (max-width: 767px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .menu-toggle span {
+    display: block;
+    position: relative;
+    height: 2px;
+    width: 25px;
+    background: #333;
+    margin-bottom: 5px;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  }
+  
+  .menu-toggle span:first-child {
+    transform-origin: 0% 0%;
+  }
+  
+  .menu-toggle span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+  }
+  
+  .menu-toggle input:checked ~ span {
+    transform: rotate(-45deg) translate(-3px, 1px);
+  }
+  
+  .menu-toggle input:checked ~ span:nth-last-child(3) {
+    opacity: 0;
+  }
+  
+  .menu-toggle input:checked ~ span:nth-last-child(2) {
+    transform: rotate(45deg) translate(-3px, 1px);
+  }
+  
+  .links {
+    display: none;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    margin-right: 0;
+  }
+  
+  .links li {
+    margin: 0;
+  }
+  
+  .links li a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+  }
+}
+
+.open .links {
+  display: block;
+}
+
+/* Animate menu slide */
+.open .links {
+  transform: translate(120px,-45px);
+  margin-bottom: -30px;
+}
+
+#except {
+    margin-left: -5px;
+  }
+  
+.links a:hover {
+    border-bottom: 3px solid #f44734;
+    }
+    
+nav ul.links li a.active {
+  border-bottom: 2px solid red;
+    }
+  
+@media only screen and (max-width: 767px) {
+  #except.mobile-menu-profile {
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 767px){
+
+  .hamburger1 {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+  }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 425px){
+  .open .links {
+    transform: translate(100px,-25px);
+    margin-bottom: -30px;
+  }
+  .logo img {
+    height: 65px;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 375px){
+  .open .links {
+    transform: translate(80px,-25px);
+    margin-bottom: -30px;
+  }
+  .logo img {
+    height: 60px;
+    margin-left: 50px;
+  }
+}
+
+.topnav a {
+  padding: 10px 0px;
+}
+
+.select1 {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  border-color: transparent;
+  width: 150px;
+}
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+.open .links {
+  transform: translate(200px,-45px);
+}
+}
+
+/* Desktop View CSS */
+// ---------------------------------------------------------------- Updated Code till here Section1 start ----------------------------------------------------------------
+
+
+.blue-box {
+  background-color: #101011;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  margin: 0 auto;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  width: block;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #0077be;
+  border-radius: 10px;
+  border: black;
+  cursor: pointer;
+  width: block;
+}
+
+button:hover {
+  background-color: #0077be;
+  color: #fff;
+}
+
+/* Mobile View CSS */
+@media only screen and (max-width: 768px) {
+
+  .blue-box {
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  input,
+  textarea {
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 100%;
+  }
+}
+
+
+/* Medium Desktop View CSS */
+@media only screen and (min-width: 1025px) and (max-width: 1366px) {
+
+  .blue-box {
+    padding: 25px;
+    border-radius: 12px;
+  }
+
+  input,
+  textarea {
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  button {
+    padding: 12px 24px;
+    border-radius: 12px;
+    width: 100%;
+  }
+}
+
+/* Large Desktop View CSS */
+@media only screen and (min-width: 1367px) {
+
+  .blue-box {
+    padding: 30px;
+    border-radius: 15px;
+  }
+
+  input,
+  textarea {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  button {
+    padding: 15px 30px;
+    border-radius: 15px;
+    width: 100%;
+  }
+
+}
+
+/* Small Desktop View CSS */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+  .blue-box {
+    padding: 18px;
+    border-radius: 8px;
+  }
+
+  input,
+  textarea {
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    width: 100%;
+  }
+}
+
+/* Tablet View CSS */
+@media only screen and (max-width: 768px) {
+
+  .blue-box {
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  input,
+  textarea {
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 100%;
+  }
+}
+
+// ---------------------------------------------------------------- Updated Code till here Section3 end ----------------------------------------------------------------
+// ---------------------------------------------------------------- Updated Code till here Section4 start ----------------------------------------------------------------
+
+/* Desktop view styles */
+.container1 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+
+.overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.overlay h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.h2{
+  color: #fff;
+}
+
+.box1, .box2 {
+  flex-basis: 50%;
+  box-sizing: border-box;
+}
+
+.blue-box1 {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.blue-box1 img {
+  max-width: 50%;
+}
+
+.blue-box1 form {
+  max-width: 50%;
+}
+
+.blue{
+  color: #f44734;
+}
+
+
+/* Mobile view styles */
+@media only screen and (max-width: 768px) {
+  .overlay h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+  }
+
+  .overlay h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+  }
+
+  .containers {
+      grid-template-columns: 1fr;
+      row-gap: 20px;
+      flex-basis: 100%;
+  }
+
+  .box1, .box2 {
+      flex-basis: 100%;
+  }
+
+  .blue-box1 {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .blue-box1 img {
+      max-width: 100%;
+      margin-bottom: 1rem;
+  }
+
+  .blue-box1 form {
+      max-width: 100%;
+  }
+
+  .image-item {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+}
+
+
+.aboutimg{
+  margin-left: 0px;
+}
+
+.abtcont{
+  margin-left: 0px;
+  margin-top: 70px;
+}
+
+@media screen and (min-width: 1441px) {
+  .aboutimg1 {
+    height: 550px;
+    margin-top: 30px;
+    margin-left: -80px;
+  }
+  .abtcont{
+    margin-top: 70px;
+  }
+
+  .abtcont1 p{
+    font-size: medium;
+  }
+
+  .abtrow{
+    display: flex;
+    width: 130%;
+    margin-left: -130px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .aboutimg{
+    margin-left: 10px;
+  }
+
+  .abtcont{
+    margin-left: 10px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .abtrow{
+    margin-left: 140px;
+  }
+}
+
+.ticket1{
+  margin-top: -70px;
+}
+
+@media only screen and (max-width: 768px){
+  .ticket1{
+    margin-top: -10px;
+  }
+}
+
+
+// ---------------------------------------------------------------- Updated Code till here Section4 end ----------------------------------------------------------------
+
+.carousels{
+  display: block;
+  height: auto;
+  max-width: 100%;
+  line-height: 1;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.carousel-img{
+  display: block;
+  height: 600px;
+  max-width: 100%;
+  line-height: 1;
+  width: 100%;
+}
+
+.tickets{
+  display: block;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 768px){
+  .carousels {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    line-height: 1;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .carousel-img {
+    display: block;
+    height: 300px;
+    max-width: 100%;
+    line-height: 1;
+    width: 100%;
+  }
+  
+  .tickets {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .tickets img{
+    height: 260px;
+    width: 390px;
+  }
+
+  .h2-heading{
+    margin-top: -100px;
+  }
+}
+
+
+@media screen and (min-width: 1440px) {
+  .carousels {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .carousel-img {
+    height: 800px;
+  }
+}
+
+// Feedback Form
+.feed1{
+  margin-bottom: 30px;
+}
+
+.feedback button{
+  width: 100%;
+  border-radius: 40px;
+  height: 30px;
+  
+}
+
+@media (max-width: 768px){
+  .feedback{
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .feed1{
+    margin-bottom: 10px;
+  }
+
+  .feedback button{
+    width: 60%;
+    border-radius: 40px;
+    height: 30px;
+  }
+}
+
+
+@media (min-width: 1441px) {
+  .feedback {
+    width: 45%;
+    margin-bottom: 20px;
+  }
+
+  .feed1 {
+    margin-bottom: 20px;
+  }
+
+  .feedback button {
+    width: 50%;
+    border-radius: 40px;
+    height: 30px;
+    margin-left: 205px;
+  }
+}
+
+/* Media Query for screen size between 768px and 1200px */
+@media (min-width: 768px) and (max-width: 1200px) {
+  .feedback {
+    width: 45%;
+    margin-bottom: 20px;
+  }
+
+  .feed1 {
+    margin-bottom: 10px;
+  }
+
+  .feedback button {
+    width: 60%;
+    border-radius: 40px;
+    height: 30px;
+    margin-left: 80px;
+  }
+}
+
+
+// .image-item {
+//   width: 33%;
+//   padding: 10px;
+//   box-sizing: border-box;
+//   float: left;
+// }
+
+// .image-item img {
+//   width: 80%;
+//   height: 100px;
+// }
+
+// @media (min-width: 1441px) {
+//   .image-item {
+//     width: 25%;
+//     padding: 20px;
+//     box-sizing: border-box;
+//   }
+
+//   .image-item img {
+//     width: 100%;
+//     height: auto;
+//   }
+// }
+
+.sponsor {
+  width: 80%; /* Take up 80% of screen width for all views */
+  margin: 0 auto; /* Center the sponsor container horizontally */
+}
+
+.title-sponsor {
+  text-align: center;
+  margin-top: 20px;
+  font-size: large;
+}
+
+.title-sponsor h4{
+  font-size: xxx-large;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.image-item {
+  width: 33%;
+  padding: 10px;
+  box-sizing: border-box;
+  float: left;
+  height: 200px; /* fixed height */
+}
+
+.image-item img {
+  width: 100%;
+  height: 100%; /* fill container */
+  object-fit:contain; /* prevent image stretching */
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .sponsor {
+    width: 80%;
+  }
+  
+  .image-item {
+    width: calc(50% - 20px);
+  }
+}
+
+/* For screen size greater than 1440px */
+@media screen and (min-width: 1440px) {
+  .sponsor {
+    width: 80%;
+  }
+  
+  .image-item {
+    width: calc(25% - 20px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .image-item {
+    width: 100%; /* full width */
+    height: auto; /* auto height */
+    margin-bottom: 20px; /* add some margin */
+  }
+
+  .image-item img {
+    width: 100%;
+    height: 100%; /* fill container */
+    object-fit: cover; /* prevent image stretching */
+  }
+
+  .title-sponsor h4{
+    font-size:large;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+
+.tickets img{
+  width: 90%;
+}
+
+// @media only screen and (min-width: 769px) and (max-width: 991px){
+//   .tickets img{
+//     width: 90%;
+//   }
+// }

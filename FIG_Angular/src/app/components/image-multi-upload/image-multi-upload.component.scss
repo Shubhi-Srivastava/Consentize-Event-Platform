@@ -1,0 +1,27 @@
+.image-upload {
+  display: none;
+}
+.upload-card {
+  background-color: #fbfdff;
+  border: 2px dashed #c0ccda;
+  border-radius: 6px;
+  box-sizing: border-box;
+  width: 148px;
+  height: 148px;
+  cursor: pointer;
+  line-height: 146px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.disable-image {
+  pointer-events: none;
+  opacity: 0.7;
+}

@@ -1,0 +1,48 @@
+<div>
+  <input
+    type="file"
+    class="image-upload"
+    #imageInput
+    id="imageInputIdx"
+    (change)="onFileChange($event)"
+  />
+  <div
+    *ngIf="imagesList.length === 0 && !hideUpload"
+    [ngClass]="{ 'disable-image': disableUpload }"
+    (click)="imageInput.click()"
+    class="upload-card cursor-pointer"
+  >
+    <img [src]="this.plusIcon" alt="Plus Icon" class="height-30px" />
+  </div>
+  <div *ngIf="imagesList.length" class="image-grid">
+    <div
+      *ngFor="let img of imagesList; let indexOfelement = index"
+      class="position-relative"
+    >
+      <img [src]="img.url" alt="Preview Image" class="img-preview border-10" />
+      <div
+        class="cursor-pointer custom-hover"
+        (click)="clearFile(indexOfelement)"
+        *ngIf="!disableDelete"
+      >
+        <img
+          [src]="this.deleteIcon"
+          alt="delete Icon"
+          class="height-30px op-1"
+        />
+      </div>
+    </div>
+    <div
+      (click)="imageInput.click()"
+      class="upload-card cursor-pointer"
+      [ngClass]="{ 'disable-image': disableUpload }"
+      *ngIf="!hideUpload"
+    >
+      <img
+        src="assets/images/plus-icon.svg"
+        alt="Plus Icon"
+        class="height-30px"
+      />
+    </div>
+  </div>
+</div>

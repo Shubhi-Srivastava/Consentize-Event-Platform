@@ -1,0 +1,23 @@
+<button
+  mat-icon-button
+  class="close-button icon-outside"
+  mat-dialog-close
+  #closeButton
+>
+  <mat-icon class="close-icon material-icons color_white">close</mat-icon>
+</button>
+<mat-dialog-content>
+  <h2>{{ eventArtists.eventName }}</h2>
+  <p>{{ eventArtists.eventLocation }}</p>
+  <p>Start Time: {{ eventArtists.eventStartTime | date : "MM/dd/yy" }}</p>
+  <p>End Time: {{ eventArtists.eventEndTime | date : "MM/dd/yy" }}</p>
+  <a href="{{ eventArtists.ticketLink }}" target="_blank"></a>
+  <p>{{ eventArtists.eventBio }}</p>
+  <ul>
+    <li *ngFor="let artist of eventArtists.artists">
+      <div>Designer: {{ artist.name }}</div>
+      <div>Email Address : {{ artist.emailAddress }}</div>
+      <div>Booth Assigned:{{ artist.boothNumber }}</div>
+    </li>
+  </ul>
+</mat-dialog-content>

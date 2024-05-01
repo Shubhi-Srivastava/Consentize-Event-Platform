@@ -1,0 +1,188 @@
+<nav [ngClass]="{ 'open': isMenuOpen8 }">
+  <div class="logo">
+    <a href="home"><img [src]="this.logoimageurl" alt="Logo"></a>
+  </div>
+  <ul class="links">
+    <select class="select1" (change)="onSelect($event)">
+      <option value="">Upcoming Events</option>
+      <option *ngFor="let event of publishedEvents" [value]="event.eventId">{{ event.eventName }}</option>
+    </select>
+    <li><a href="home">Home</a></li>
+    <li><a (click)="team($event)">Team</a></li>
+    <li><a (click)="designers($event)">Designers</a></li>
+    <li><a href="#">Tickets</a></li>
+    <li><a class="active" href="#">SignIn/Up</a></li>
+  </ul>
+  <div class="menu-toggle">
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="menu-toggle" (click)="toggleMenu()">
+      <div class="hamburger1">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+    </label>
+  </div>
+</nav>
+
+<div>
+<form (keydown.enter)="login()">
+  <div
+  class="background-image overlay"
+  [ngStyle]="{ 'background-image': 'url(' + this.backgroundurl + ')' }"
+>
+    <mat-card class="login-card">
+      <mat-card-content class="spaceneeded">
+        <div class="loginlogo">
+          <img [src]="this.logoimageurl" alt="FIG Logo">
+        </div>
+        <h2 class="logintitle">{{this.eventName}}</h2>
+        <mat-form-field class="full-width-input">
+          <input matInput [(ngModel)]="loginData.email" placeholder="Email" name="email" required>
+          <mat-error>
+            Please provide a valid email address
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput [type]="hidePassword ? 'password' : 'text'" type="password" [(ngModel)]="loginData.password" placeholder="Password" name="password" required>
+          <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{ hidePassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button type="submit" (click)="login()"  style="background-color: #e1e5cf; width: 260px; border-radius: 30px; margin-top: 10px;">Login</button>
+        <div class="forgot-password">
+          <a (click)="forgotpassword()">Forgot Password?</a>
+        </div>
+        <!-- <div class="userType">
+          <input type="radio" id="attendee" name="userType" [(ngModel)]="this.loginwithgoogleusertype" value="Attendee" required checked>
+          <label for="attendee">Attendee</label>
+          <input type="radio" id="artist" name="userType" [(ngModel)]="this.loginwithgoogleusertype" value="Artist" required>
+          <label for="artist">Artist</label>
+        </div> -->
+
+
+
+        <!-- Comment out if you have dns serve -->
+        <!-- <div class="login-with-google">
+          <h6>Login Below With Google</h6>
+          <div id="buttonDiv"></div>
+        </div> -->
+
+
+
+
+
+        
+        <div class="not-member">
+          Not Registered Before? <a href="signup">Signup</a> 
+        </div>
+        
+      </mat-card-content>
+    </mat-card>
+  </div>
+</form>
+</div>
+
+
+ <!-- Footer -->
+ <footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+  >
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>FIG
+          </h6>
+          <p>
+            Hello, Welcome to Buffalo Fashion Week
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="https://google.com/" class="text-reset">FIG</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="https://google.com/" class="text-reset">FIG</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fas fa-home me-3"></i> Buffalo, NY 14226, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://google.com/">google.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->

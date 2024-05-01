@@ -1,0 +1,164 @@
+<nav>
+  <div class="logo">
+    <a href="home"> <img [src]="this.logoimageurl" alt="Logo" /> </a>
+  </div>
+  <div class="menu-toggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <ul class="links topnav">
+    <li><a [routerLink]="" (click)="setPathCreateEvent()">Create Event </a></li>
+    <li>
+      <a [routerLink]="" (click)="setPathUpcomingEvent()">Upcoming Events</a>
+    </li>
+    <li>
+      <a [routerLink]="" (click)="setPathEventHistory()" class="active"
+        >Event History</a
+      >
+    </li>
+    <li>
+      <a [routerLink]="" (click)="setPathAccontAdmin()">Profile</a>
+    </li>
+    <li><a (click)="logOut()">Log Out</a></li>
+  </ul>
+</nav>
+
+<div
+  class="background-image"
+  [ngStyle]="{ 'background-image': 'url(' + this.backgroundurl + ')' }"
+>
+  <div style="height: 5px"></div>
+  <div class="row color-purple px-5 py-5 margin-purple rounded-2">
+    <div class="container">
+      <div
+        class="row color-white m-2 rounded-2 p-2"
+        *ngFor="let event of events"
+      >
+        <div class="col-12 font-weight-500 text-decoration-underline">
+          {{ event.eventName }}
+        </div>
+        <div class="col-12">
+          {{ event.eventBio }}
+        </div>
+
+        <div class="col-9">
+          Date: {{ event.eventStartTime }} to {{ event.eventEndTime }}
+        </div>
+        <div class="col-3" style="text-align: center">
+          <button
+            style="
+              background-color: #d1c8e0;
+              width: 150px;
+              border: none;
+              border-radius: 10px;
+            "
+            (click)="edit(event.eventId)"
+          >
+            View Details
+          </button>
+        </div>
+
+        <div class="col-12 font-weight-500">
+          Location : {{ event.eventLocation }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height: 5px"></div>
+</div>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <!-- Section: Social media -->
+  <section
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+  >
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>FIG
+          </h6>
+          <p>Hello, Welcome to Buffalo Fashion Week</p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Products</h6>
+          <p>
+            <a href="https://google.com/" class="text-reset">FIG</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
+          <p>
+            <a href="https://google.com/" class="text-reset">FIG</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-3"></i> Buffalo, NY 14226, US</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            info@example.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+          <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05)">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://google.com/">google.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->

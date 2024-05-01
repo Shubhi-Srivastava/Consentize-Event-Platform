@@ -1,0 +1,342 @@
+mat-card {
+  max-width: 400px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+mat-form-field {
+  display: block;
+}
+
+.btn-facebook,
+.btn-facebook:hover,
+.btn-facebook:first-child:active {
+  background: #3b5998;
+  border-color: #3b5998;
+  color: #fff;
+  width: 300px;
+  height: 50px;
+}
+
+.whole {
+  width: 330px;
+  padding: 2rem 0 1rem 0;
+  margin: 85px 575px;
+  background: #fff;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  height: 430px;
+}
+
+.logintitle {
+  margin-top: 10px;
+}
+
+/* navigation bar */
+.logo {
+  margin-right: 1rem;
+}
+
+.logo img {
+  height: 100px;
+  width: auto;
+}
+
+nav {
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.menu-toggle input {
+  display: none;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  width: 25px;
+  margin-top: 5px;
+  position: relative;
+  background: #333;
+  border-radius: 3px;
+  z-index: 1;
+}
+
+.menu-toggle span:first-child {
+  transform-origin: 0% 0%;
+}
+
+.menu-toggle span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+.menu-toggle input:checked ~ span {
+  transform: rotate(-45deg) translate(-2px, -1px);
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(3) {
+  opacity: 0;
+}
+
+.menu-toggle input:checked ~ span:nth-last-child(2) {
+  transform: rotate(45deg) translate(-2px, -1px);
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 50;
+}
+
+.links li {
+  margin-left: 1rem;
+}
+
+.links li:first-child {
+  margin-left: 0;
+}
+
+.links li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.links li a:hover {
+  color: #000;
+}
+
+.color-purple {
+  background-color: #d1c8e0;
+}
+
+.margin-purple {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-right: 19rem;
+  margin-left: 19rem;
+}
+.height-and-scroll {
+  height: 600px;
+  overflow-y: scroll;
+}
+.color-white {
+  background-color: #fff;
+  opacity: 1;
+}
+
+.background-image {
+  background-image: url("../../../assets/images/bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+  }
+  .links {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    background-color: #fff;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .links li {
+    margin: 0.5rem 0;
+  }
+  .links li a {
+    font-size: 1.2rem;
+  }
+  .menu-toggle input:checked ~ .links {
+    display: flex;
+  }
+}
+/* Add a black background color to the top navigation */
+.topnav {
+  // background-color: #333;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+}
+
+.topnav a:hover {
+  border-bottom: 3px solid red;
+}
+
+.topnav a.active {
+  border-bottom: 3px solid red;
+}
+
+.portfolio-container-bg {
+  background: rgba(209, 200, 224, 0.6);
+  border-radius: 20px;
+  padding: 32px 40px;
+
+  .register-button {
+    background: #ac9cc4;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+    border-color: #ac9cc4;
+    padding: 6px 70px;
+  }
+  .register-button,
+  .cancel-btn {
+    &:hover {
+      opacity: 0.8;
+    }
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba(172, 156, 196, 0.5);
+    }
+  }
+  .portfolio-header {
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+  }
+  .portfolio-form {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px 30px;
+  }
+  .input-title {
+    font-weight: 600;
+    font-size: 18px;
+    color: #000000;
+  }
+  .portfolio-form-input {
+    background: rgba(172, 156, 196, 0.4);
+    border-radius: 20px;
+    border: none;
+    padding: 5px 10px;
+  }
+  .form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(172, 156, 196, 0.25);
+  }
+  .preview-btn {
+    background: #ac9cc4;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 17px;
+    color: #000000;
+    border: none;
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.5);
+    }
+  }
+  .cancel-btn {
+    background: #ffffff;
+    border-radius: 15px;
+    border: none;
+    color: #000000;
+    font-weight: 600;
+    font-size: 17px;
+    color: #000000;
+  }
+
+  .edit-btn {
+    background: #ac9cc4;
+    border-radius: 15px;
+    border: none;
+    color: #000000;
+    font-weight: 600;
+    font-size: 17px;
+    color: #000000;
+  }
+
+  .upload-image-box {
+    background: rgba(172, 156, 196, 0.4);
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    height: 80px;
+    width: 10%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
+  }
+  .header-title {
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+  }
+  .bio-container {
+    background: rgba(172, 156, 196, 0.4);
+    border-radius: 20px;
+    padding: 20px;
+    .bio-img {
+      border-radius: 10px;
+      object-fit: fill;
+      height: 140px;
+      width: 140px;
+    }
+    .bio-txt {
+      font-weight: 600;
+      font-size: 18px;
+      color: #000000;
+    }
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .image-upload {
+    display: none;
+  }
+  .upload-card {
+    background-color: #fbfdff;
+    border: 2px dashed #c0ccda;
+    border-radius: 6px;
+    box-sizing: border-box;
+    width: 148px;
+    height: 148px;
+    cursor: pointer;
+    line-height: 146px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.height-25px {
+  height: 25px;
+}
+.height-40px {
+  height: 40px;
+}
+.height-100px {
+  height: 100px;
+}
